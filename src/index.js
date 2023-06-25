@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
 import config from './config';
 import { Amplify } from 'aws-amplify';
+import { initSentry } from './libs/errorLib';
+initSentry();
 Amplify.configure({
   Auth: {
     mandatorySignIn: true,

@@ -7,3 +7,14 @@
     font-family: "Open Sans", sans-serif;
     font-weight: 600;
 }
+
+.custom-btn {
+    background-color: #333;
+    border-color: #333;
+  }
+
+  .text-muted {
+    color: rgb(47, 47, 47) !important;
+  }
+  
+  

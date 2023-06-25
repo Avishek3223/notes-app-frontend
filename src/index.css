@@ -6,6 +6,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-family: "Open Sans", sans-serif;
+  background-image: url(blank-business-card-blue-background.jpg);
+  background-repeat: no-repeat; 
+  background-size: cover;
+  height: 100vh;
 }
 
 h1,
@@ -26,3 +30,4 @@ input.form-control {
 input[type=file] {
   width: 100%;
 }
+

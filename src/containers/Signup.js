@@ -1,25 +1,24 @@
 import React, { useState } from "react";
-import { Auth } from "aws-amplify";
 import Form from "react-bootstrap/Form";
-import { useNavigate } from "react-router-dom";
 import LoaderButton from "../components/LoaderButton";
 import { useAppContext } from "../libs/contextLib";
 import { useFormFields } from "../libs/hooksLib";
+import { Auth } from "aws-amplify";
 import { onError } from "../libs/errorLib";
 import "./Signup.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
   const [fields, handleFieldChange] = useFormFields({
     email: "",
     password: "",
     confirmPassword: "",
-    confirmationCode: ""
+    confirmationCode: "",
   });
-
-  const navigate = useNavigate();
   const [newUser, setNewUser] = useState(null);
   const { userHasAuthenticated } = useAppContext();
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   function validateForm() {
     return (
@@ -35,14 +34,18 @@ export default function Signup() {
 
   async function handleSubmit(event) {
     event.preventDefault();
+
     setIsLoading(true);
+
     try {
       const newUser = await Auth.signUp({
         username: fields.email,
-        password: fields.password
+        password: fields.password,
       });
+
       setIsLoading(false);
       setNewUser(newUser);
+ // Redirect after successful signup
     } catch (e) {
       onError(e);
       setIsLoading(false);
@@ -51,10 +54,13 @@ export default function Signup() {
 
   async function handleConfirmationSubmit(event) {
     event.preventDefault();
+
     setIsLoading(true);
+
     try {
       await Auth.confirmSignUp(fields.email, fields.confirmationCode);
       await Auth.signIn(fields.email, fields.password);
+
       userHasAuthenticated(true);
       navigate("/");
     } catch (e) {
@@ -122,7 +128,7 @@ export default function Signup() {
           block
           size="lg"
           type="submit"
-          style={{ backgroundColor: '#07fe2c', color: 'white' }}
+          variant="success"
           isLoading={isLoading}
           disabled={!validateForm()}
         >

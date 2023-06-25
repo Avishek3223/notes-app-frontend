@@ -1,13 +1,11 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
+import {createRoot} from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
 import config from './config';
 import { Amplify } from 'aws-amplify';
-import { initSentry } from './libs/errorLib';
-initSentry();
 Amplify.configure({
   Auth: {
     mandatorySignIn: true,

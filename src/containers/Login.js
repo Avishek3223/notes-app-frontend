@@ -7,6 +7,7 @@ import { useAppContext } from "../libs/contextLib";
 import { useFormFields } from "../libs/hooksLib";
 import { onError } from "../libs/errorLib";
 import { Link } from "react-router-dom";
+import { FacebookLoginButton } from "react-social-login-buttons";
 import "./Login.css";
 
 export default function Login() {
@@ -35,6 +36,11 @@ export default function Login() {
     }
   }
 
+  function handleFbLogin() {
+    // Perform the Facebook login action here
+    // You can customize this function based on your requirements
+  }
+
   return (
     <div className="Login">
       <Form onSubmit={handleSubmit}>
@@ -55,7 +61,9 @@ export default function Login() {
             onChange={handleFieldChange}
           />
         </Form.Group>
-        <Link to="/login/reset" className="forgot-password-link">forgot password?</Link>
+        <Link to="/login/reset" className="forgot-password-link">
+          forgot password?
+        </Link>
         <LoaderButton
           block
           size="lg"
@@ -65,6 +73,14 @@ export default function Login() {
         >
           Login
         </LoaderButton>
+        <hr />
+        <a
+          href={`https://www.facebook.com/v12.0/dialog/oauth?client_id=205071122077070&redirect_uri=${encodeURIComponent(
+            "http://localhost:3000/login/callback"
+          )}`}
+        >
+          <FacebookLoginButton size="small" onClick={handleFbLogin} />
+        </a>
       </Form>
     </div>
   );

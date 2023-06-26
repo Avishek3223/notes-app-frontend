@@ -1,0 +1,27 @@
+.FacebookButton {
+    background-color: #3b5998;
+    border-color: #3b5998;
+    color: white;
+}
+
+.FacebookButton:hover {
+    background-color: #2d4373;
+    border-color: #2d4373;
+}
+
+.FacebookButton:disabled {
+    background-color: #9a9a9a;
+    border-color: #9a9a9a;
+    cursor: not-allowed;
+}
+
+.FacebookButton:disabled:hover {
+    background-color: #9a9a9a;
+    border-color: #9a9a9a;
+}
+
+.FacebookButton {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+}

@@ -5,8 +5,10 @@ import { useAppContext } from "../libs/contextLib";
 import { useFormFields } from "../libs/hooksLib";
 import { Auth } from "aws-amplify";
 import { onError } from "../libs/errorLib";
-import "./Signup.css";
 import { useNavigate } from "react-router-dom";
+import { FacebookLoginButton } from "react-social-login-buttons";
+import "../components/FacebookButton.css";
+import "./Signup.css";
 
 export default function Signup() {
   const [fields, handleFieldChange] = useFormFields({
@@ -45,7 +47,6 @@ export default function Signup() {
 
       setIsLoading(false);
       setNewUser(newUser);
- // Redirect after successful signup
     } catch (e) {
       onError(e);
       setIsLoading(false);
@@ -67,6 +68,10 @@ export default function Signup() {
       onError(e);
       setIsLoading(false);
     }
+  }
+
+  function handleFbLogin() {
+    userHasAuthenticated(true);
   }
 
   function renderConfirmationForm() {
@@ -141,6 +146,12 @@ export default function Signup() {
   return (
     <div className="Signup">
       {newUser === null ? renderForm() : renderConfirmationForm()}
+      <hr />
+      <div style={{  display: "flex", justifyContent: "center"}}>
+        <a href={`https://www.facebook.com/v12.0/dialog/oauth?client_id=205071122077070&redirect_uri=${encodeURIComponent("http://localhost:3000/login/callback")}`}>
+          <FacebookLoginButton size="small" onClick={handleFbLogin} />
+        </a>
+      </div>
     </div>
   );
 }

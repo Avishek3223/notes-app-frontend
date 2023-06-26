@@ -1,20 +1,64 @@
 .Home .lander {
-    padding: 80px 0;
-    text-align: center;
+  padding: 80px 0;
+  text-align: center;
 }
 
 .Home .lander h1 {
-    font-family: "Open Sans", sans-serif;
-    font-weight: 600;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
 }
 
 .custom-btn {
-    background-color: #333;
-    border-color: #333;
-  }
+  background-color: #333;
+  border-color: #333;
+}
 
-  .text-muted {
-    color: rgb(47, 47, 47) !important;
-  }
-  
-  
+.text-muted {
+  color: #25313c !important;
+}
+
+.simple-app-text {
+  color: white;
+  text-shadow: 0 0 15px #000000;
+  font-weight: 600;
+
+}
+.btn-login {
+  background-color: #ff6c00cf !important;
+  border-color: #ff6c00cf !important;
+}
+
+.btn-login:hover {
+  background-color: #25313c !important;
+  border-color: #25313c !important;
+  color: #fff;
+}
+
+.btn-signup {
+  background-color: #25313ccf;
+  border-color: #25313ccf;
+}
+
+.btn-signup:hover {
+  background-color: #e17b30;
+  border-color: #e17b30;
+  color: #fff;
+}
+
+.btn {
+  background-color: #25313ccf;
+  border-color: #545b61cf;
+  color: #fff;
+}
+
+.btn:hover {
+  background-color: #e17b30;
+  border-color: #e17b30;
+  color: #fff;
+}
+
+.notes-heading {
+  font-family: 'Poppins', sans-serif;
+  color: #25313c;
+}
+

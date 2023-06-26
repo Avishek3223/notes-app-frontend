@@ -10,7 +10,7 @@ import { s3Upload } from "../libs/awsLib";
 
 export default function NewNote() {
   const file = useRef(null);
-  const navigate = useNavigate(); // Change from useHistory to useNavigate
+  const navigate = useNavigate();
   const [content, setContent] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -36,7 +36,7 @@ export default function NewNote() {
     try {
       const attachment = file.current ? await s3Upload(file.current) : null;
       await createNote({ content, attachment });
-      navigate('/'); // Change history.push("/") to navigate('/')
+      navigate('/');
     } catch (e) {
       onError(e);
       setIsLoading(false);
@@ -60,7 +60,7 @@ export default function NewNote() {
           />
         </Form.Group>
         <Form.Group controlId="file">
-          <Form.Label>Attachment</Form.Label>
+          <Form.Label className="attachments-label">Attachment</Form.Label>
           <Form.Control onChange={handleFileChange} type="file" />
         </Form.Group>
         <LoaderButton
@@ -70,6 +70,7 @@ export default function NewNote() {
           variant="primary"
           isLoading={isLoading}
           disabled={!validateForm()}
+          className="create-button"
         >
           Create
         </LoaderButton>

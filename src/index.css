@@ -1,12 +1,13 @@
 body {
   margin: 0;
   padding: 0;
-  color: #333;
+  color: #2a3842;
   font-size: 16px;
+  font-weight: 700;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-family: "Open Sans", sans-serif;
-  background-image: url(blank-business-card-blue-background.jpg);
+  background-image: url(gray.jpg);
   background-repeat: no-repeat; 
   background-size: cover;
   height: 100vh;
@@ -18,7 +19,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "PT Serif", serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 select.form-control,

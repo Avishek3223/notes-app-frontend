@@ -7,4 +7,19 @@
         margin: 0 auto;
         max-width: 320px;
     }
+
+    .btn-success.disabled,
+    .btn-success:disabled {
+        color: #fff;
+        background-color: rgb(0, 0, 0);
+        border-color: rgb(0, 0, 0);
+    }
+
+    .btn-success:hover {
+        background-color: rgb(255, 106, 0);
+        border-color: rgb(255, 106, 0);
+        color: #fff;
+    }
+
+
 }

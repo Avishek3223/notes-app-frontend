@@ -12,21 +12,26 @@ export default function Home() {
   const [notes, setNotes] = useState([]);
   const { isAuthenticated } = useAppContext();
   const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     async function onLoad() {
       if (!isAuthenticated) {
         return;
       }
+
       try {
         const notes = await loadNotes();
         setNotes(notes);
       } catch (e) {
         onError(e);
       }
+
       setIsLoading(false);
     }
+
     onLoad();
   }, [isAuthenticated]);
+
   function loadNotes() {
     return API.get("notes", "/notes");
   }
@@ -61,12 +66,20 @@ export default function Home() {
     return (
       <div className="lander">
         <h1>Scratch</h1>
-        <p className="text-muted">A simple note taking app</p>
+        <p className="text-muted">
+          <span className="simple-app-text">A simple note taking app</span>
+        </p>
         <div className="pt-3">
-          <Link to="/login" className="btn btn-info btn-lg mr-3">
+          <Link
+            to="/login"
+            className="btn btn-info btn-lg mr-3 btn-login"
+          >
             Login
           </Link>
-          <Link to="/signup" className="btn btn-success btn-lg custom-btn">
+          <Link
+            to="/signup"
+            className="btn btn-success btn-lg custom-btn btn-signup"
+          >
             Signup
           </Link>
         </div>
@@ -77,14 +90,21 @@ export default function Home() {
   function renderNotes() {
     return (
       <div className="notes">
-        <h2 className="pb-3 mt-4 mb-3 border-bottom">Your Notes</h2>
+        <h2 className="pb-3 mt-4 mb-3 border-bottom notes-heading">Your Notes</h2>
         <ListGroup>{!isLoading && renderNotesList(notes)}</ListGroup>
       </div>
     );
   }
+
   return (
     <div className="Home">
-      {isAuthenticated ? renderNotes() : renderLander()}
+      {isAuthenticated ? (
+        renderNotes()
+      ) : (
+        <div className="lander">
+          {renderLander()}
+        </div>
+      )}
     </div>
   );
 }

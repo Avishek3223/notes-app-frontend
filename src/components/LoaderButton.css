@@ -13,3 +13,16 @@
         transform: scale(1) rotate(360deg);
     }
 }
+
+.SettingsButton {
+    background-color: gray;
+    color: white;
+    font-weight: bold;
+    border: none;
+  }
+  
+  .SettingsButton:hover {
+    background-color: darkgray;
+  }
+  
+  

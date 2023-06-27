@@ -58,8 +58,11 @@
 }
 
 .notes-heading {
-  font-family: 'Poppins', sans-serif;
-  color: #25313c;
+  font-family: 'Kanit', sans-serif;
+  color: #ffffff;
+  font-weight: 500;
+  text-align: center;
+  text-shadow: 0px 0px 9px black;
 }
 
 .simple-app-text{
@@ -80,5 +83,8 @@
   from { width:0}
 }
 
+.listItem {
+  box-shadow: -14px 13px 13px rgba(0, 0, 0, 0.4); /* Adjust the shadow properties as desired */
+}
 
 

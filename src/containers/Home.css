@@ -62,5 +62,23 @@
   color: #25313c;
 }
 
+.simple-app-text{
+  display: inline-block;
+  width: 19%;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: 
+    typing 5s,
+    cursor .4s step-end infinite alternate;
+}
+
+@keyframes cursor {
+  50% { border-color:transparent }
+}
+
+@keyframes typing {
+  from { width:0}
+}
+
 
 

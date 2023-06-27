@@ -14,29 +14,29 @@
         font-size: 14px;
     }
 
-    .btn-primary,
-    .btn-primary.disabled,
-    .btn-primary:disabled {
-        color: #fff;
-        background-color:#25313c;
-        border-color: #5d5d5d;
-    }
-
-    .btn-primary:hover {
-        background-color: #ff6a00;
-        border-color: #ff8c00;
-    }
-    
-    .btn{
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .forgot-password-link {
-        font-weight: 600;
-        text-shadow: #040404 ;
-        text-size-adjust: 1rem;
-        color: rgb(2 17 219);
-      }
-      
-
 }
+
+.btn-primary,
+.btn-primary.disabled,
+.btn-primary:disabled {
+    color: #fff;
+    background-color:#25313c;
+    border-color: #5d5d5d;
+}
+
+.btn-primary:hover {
+    background-color: #ff6a00;
+    border-color: #ff8c00;
+}
+
+.btn{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.forgot-password-link {
+    font-weight: 600;
+    text-shadow: #040404 ;
+    text-size-adjust: 1rem;
+    color: rgb(2 17 219);
+  }
+  

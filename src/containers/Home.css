@@ -71,7 +71,7 @@
   white-space: nowrap;
   overflow: hidden;
   animation: 
-    typing 5s,
+    typing 4s infinite,
     cursor .4s step-end infinite alternate;
 }
 
@@ -86,5 +86,3 @@
 .listItem {
   box-shadow: -14px 13px 13px rgba(0, 0, 0, 0.4); /* Adjust the shadow properties as desired */
 }
-
-

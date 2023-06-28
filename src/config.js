@@ -15,7 +15,7 @@ const config = {
       REDIRECT_URI: "http://localhost:3000/login/callback"
     },
     social: {
-      FB: "205071122077070"
+      FB: "1308851786388960"
     }
   };
   

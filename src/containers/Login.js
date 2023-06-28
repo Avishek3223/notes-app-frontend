@@ -75,8 +75,8 @@ export default function Login() {
         </LoaderButton>
         <hr />
         <a
-          href={`https://www.facebook.com/v12.0/dialog/oauth?client_id=205071122077070&redirect_uri=${encodeURIComponent(
-            "http://localhost:3000/login/callback"
+          href={`https://www.facebook.com/v12.0/dialog/oauth?client_id=1308851786388960&redirect_uri=${encodeURIComponent(
+            "https://avishek-notes.netlify.app/notes/new"
           )}`}
         >
           <FacebookLoginButton size="small" onClick={handleFbLogin} />

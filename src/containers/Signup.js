@@ -147,10 +147,11 @@ export default function Signup() {
     <div className="Signup">
       {newUser === null ? renderForm() : renderConfirmationForm()}
       <hr />
-      <div style={{  display: "flex", justifyContent: "center"}}>
-        <a href={`https://www.facebook.com/v12.0/dialog/oauth?client_id=205071122077070&redirect_uri=${encodeURIComponent("http://localhost:3000/login/callback")}`}>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <a href={`https://www.facebook.com/v12.0/dialog/oauth?client_id=1308851786388960}`}>
           <FacebookLoginButton size="small" onClick={handleFbLogin} />
         </a>
+
       </div>
     </div>
   );

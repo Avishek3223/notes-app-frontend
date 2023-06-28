@@ -35,5 +35,4 @@ export function onError(error) {
   }
   logError(error, errorInfo);
   alert(message);
-
 }

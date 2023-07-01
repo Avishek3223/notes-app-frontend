@@ -19,10 +19,11 @@
 
 .simple-app-text {
   color: white;
-  text-shadow: 0 0 15px #000000;
+  text-shadow: 0 0 10px #000000;
   font-weight: 600;
 
 }
+
 .btn-login {
   background-color: #ff6c00cf !important;
   border-color: #ff6c00cf !important;
@@ -36,18 +37,18 @@
 
 .btn-signup {
   background-color: #25313ccf;
-  border-color: #25313ccf;
+ 
 }
 
 .btn-signup:hover {
   background-color: #e17b30;
-  border-color: #e17b30;
+
   color: #fff;
 }
 
 .btn {
-  background-color: #25313ccf;
-  border-color: #545b61cf;
+  background-color:#25313ccf;
+  border-color: #25313ccf;
   color: #fff;
 }
 
@@ -65,24 +66,141 @@
   text-shadow: 0px 0px 9px black;
 }
 
-.simple-app-text{
+.simple-app-text {
   display: inline-block;
   width: 40%;
   white-space: nowrap;
   overflow: hidden;
-  animation: 
-    typing 4s infinite,
-    cursor .4s step-end infinite alternate;
+  border-right: #efeded;
+  animation:
+    typing 9s infinite,
+    cursor .9s step-end infinite alternate;
 }
 
 @keyframes cursor {
-  50% { border-color:black }
+  50% {
+    border-color: black
+  }
 }
 
 @keyframes typing {
-  from { width:0}
+  from {
+    width: 0
+  }
 }
 
 .listItem {
-  box-shadow: -14px 13px 13px rgba(0, 0, 0, 0.4); /* Adjust the shadow properties as desired */
+  box-shadow: -14px 13px 13px rgba(0, 0, 0, 0.4);
+  /* Adjust the shadow properties as desired */
+}
+
+.button {
+  position: relative;
+  margin: 0 10px;
+  height: 50px;
+  width: 50px;
+  overflow: hidden;
+  background:rgb(238, 232, 232);
+  border-radius: 50px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-out;
+  cursor: pointer;
+  display:inline-block;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.button:hover {
+  width: 200px;
+  z-index: 1;
+  background: #efeded;
+  /* Ensure the hovered button is above other buttons */
+}
+
+.button .icon {
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  border-radius: 50px;
+  box-sizing: border-box;
+  line-height: 50px;
+  justify-content: center;
+  transition: all 0.3s ease-out;
+}
+
+.button:hover .icon {
+  width: 50px;
+}
+
+.button:nth-child(3):hover .icon {
+  background-color: #1997d6;
+  color: white;
+}
+
+.button:nth-child(1):hover .icon {
+  background: #4267b2;
+  color: white;
+}
+
+.button:nth-child(2):hover .icon {
+  background: #e1306c;
+  color: white;
+}
+
+.button .icon i {
+  font-size: 25px;
+  line-height: 50px;
+  transition: all 0.3s ease-out;
+}
+
+.button:hover span {
+  opacity: 1;
+  visibility: visible;
+}
+
+.button span {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-out;
+  position: absolute;
+  left: 80px;
+  /* Adjust the position as desired */
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  white-space: nowrap;
+  z-index: 2;
+  /* Ensure the text is above the background colors */
+}
+
+.button:nth-child(1) {
+  color: #4267b2;
+}
+
+.button:nth-child(2) {
+  color: #e1306c;
+}
+
+.button:nth-child(3) {
+  color: #1da1f2;
+}
+
+.blue {
+  color: #4267b2;
+}
+
+.pink {
+  color: #e1306c;
+}
+
+.sky {
+  color: #1da1f2;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 14rem; /* Adjust as needed */
 }

@@ -8,6 +8,10 @@
     .Settings>.LoaderButton:first-child {
         margin-bottom: 15px;
     }
+    
+    .EkThaBtn{
+        background-color: rgba(0, 0, 0, 0.675);
+    }
       
 }
 

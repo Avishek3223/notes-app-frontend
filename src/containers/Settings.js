@@ -22,12 +22,12 @@ export default function Settings() {
   return (
     <div className="Settings">
       <LinkContainer to="/settings/email">
-        <Button variant="primary" size="lg" block onClick={handleChangeEmail}>
+        <Button className="EkThaBtn" variant="primary" size="lg" block onClick={handleChangeEmail}>
           Change Email
         </Button>
       </LinkContainer>
       <LinkContainer to="/settings/password">
-        <Button variant="primary" size="lg" block onClick={handleChangePassword}>
+        <Button className="EkThaBtn" variant="primary" size="lg" block onClick={handleChangePassword}>
           Change Password
         </Button>
       </LinkContainer>

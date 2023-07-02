@@ -1,0 +1,145 @@
+.footer {
+    background-color: #0000007d;
+    padding: 2px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-top-left-radius: 60px;
+    border-top-right-radius: 60px;
+    display: inline;
+    z-index: 1;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.footer-link {
+    font-family: "Open Sans", sans-serif;
+    margin: 0 6px;
+    color: #d5d5d5;
+    font-size: 19px;
+
+}
+
+.links {
+    display: flex ;
+    justify-content: center;
+    padding-left: 12rem;
+}
+
+.footer-contact {
+    margin: 11px 4rem;
+}
+
+.footer-link:hover {
+    color: #f28722;
+    text-decoration: none;
+
+}
+
+.footer .button {
+    position: relative;
+    margin: 0 10px;
+    height: 45px;
+    width: 45px;
+    overflow: hidden;
+    background: rgb(238, 232, 232);
+    border-radius: 45px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-out;
+    cursor: pointer;
+    display: inline-block;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer .button:hover {
+    width: 200px;
+    z-index: 1;
+    background: #efeded;
+}
+
+.footer .button .icon {
+    display: inline-block;
+    height: 45px;
+    width: 45px;
+    text-align: center;
+    border-radius: 45px;
+    box-sizing: border-box;
+    line-height: 45px;
+    justify-content: center;
+    transition: all 0.3s ease-out;
+}
+
+.footer .button:hover .icon {
+    width: 45px;
+}
+
+.footer .button-facebook:hover .icon {
+    background: #4267b2;
+    color: white;
+}
+
+.footer .button-instagram:hover .icon {
+    background: #e1306c;
+    color: white;
+}
+
+.footer .button-linkedin:hover .icon {
+    background-color: #1997d6;
+    color: white;
+}
+
+
+.footer .button .icon i {
+    font-size: 25px;
+    line-height: 45px;
+    transition: all 0.3s ease-out;
+}
+
+.footer .button:hover span {
+    opacity: 1;
+    visibility: visible;
+}
+
+.footer .button span {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-out;
+    position: absolute;
+    left: 80px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    white-space: nowrap;
+    z-index: 2;
+}
+
+.blue {
+    color: #2c6cec;
+}
+
+.pink {
+    color: #e1306c;
+}
+
+.sky {
+    color: #1da1f2;
+}
+
+.footer .button-facebook .icon{
+    color: #2c6cec;
+}
+
+.footer .button-instagram .icon{
+    color: #e1306c;
+}
+
+.footer .button-linkedin .icon{
+   color: #1da1f2;
+}

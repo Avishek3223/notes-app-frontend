@@ -7,6 +7,7 @@ import { API } from "aws-amplify";
 import { BsPencilSquare } from "react-icons/bs";
 import { LinkContainer } from "react-router-bootstrap";
 import { Link } from "react-router-dom";
+import Footer from "./Footer";
 
 export default function Home() {
   const [notes, setNotes] = useState([]);
@@ -67,13 +68,10 @@ export default function Home() {
       <div className="lander">
         <h1 className="text">Scratch</h1>
         <p className="text-muted">
-          <span className="simple-app-text">A simple note taking app</span>
+          <span className="simple-app-text">A simple note-taking app</span>
         </p>
         <div className="pt-3">
-          <Link
-            to="/login"
-            className="btn btn-info btn-lg mr-3 btn-login"
-          >
+          <Link to="/login" className="btn btn-info btn-lg mr-3 btn-login">
             Login
           </Link>
           <Link
@@ -105,39 +103,11 @@ export default function Home() {
           {renderLander()}
         </div>
       )}
+
       {/* Social Media Buttons */}
-      <div className="button-container">
-        <a href="https://www.facebook.com/profile.php?id=100084340068772">
-          <div className="button">
-            <div className="icon">
-              <i className="fab fa-facebook-f"></i>
-              <div>
-                <span className="blue">Facebook</span>
-              </div>
-            </div>
-          </div>
-        </a>
-        <a href="https://www.instagram.com/_avishek_23_/">
-          <div className="button">
-            <div className="icon">
-              <i className="fab fa-instagram"></i>
-              <div>
-                <span className="pink">Instagram</span>
-              </div>
-            </div>
-          </div>
-        </a>
-        <a href="https://www.linkedin.com/in/avishek-mishra-6b3910272/">
-          <div className="button">
-            <div className="icon">
-              <i className="fab fa-linkedin"></i>
-              <div>
-                <span className="sky">LinkedIn</span>
-              </div>
-            </div>
-          </div>
-        </a>
-      </div >
-    </div >
+      <div className="footer">
+        <Footer />
+      </div>
+    </div>
   );
 }

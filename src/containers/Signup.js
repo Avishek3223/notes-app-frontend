@@ -6,8 +6,6 @@ import { useFormFields } from "../libs/hooksLib";
 import { Auth } from "aws-amplify";
 import { onError } from "../libs/errorLib";
 import { useNavigate } from "react-router-dom";
-import { FacebookLoginButton } from "react-social-login-buttons";
-import "../components/FacebookButton.css";
 import "./Signup.css";
 
 export default function Signup() {
@@ -70,9 +68,7 @@ export default function Signup() {
     }
   }
 
-  function handleFbLogin() {
-    userHasAuthenticated(true);
-  }
+
 
   function renderConfirmationForm() {
     return (
@@ -148,10 +144,6 @@ export default function Signup() {
       {newUser === null ? renderForm() : renderConfirmationForm()}
       <hr />
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <a href={`https://www.facebook.com/v12.0/dialog/oauth?client_id=1308851786388960}`}>
-          <FacebookLoginButton size="small" onClick={handleFbLogin} />
-        </a>
-
       </div>
     </div>
   );

@@ -7,7 +7,6 @@ import { useAppContext } from "../libs/contextLib";
 import { useFormFields } from "../libs/hooksLib";
 import { onError } from "../libs/errorLib";
 import { Link } from "react-router-dom";
-import { FacebookLoginButton } from "react-social-login-buttons";
 import "./Login.css";
 
 export default function Login() {
@@ -34,11 +33,6 @@ export default function Login() {
       onError(e);
       setIsLoading(false);
     }
-  }
-
-  function handleFbLogin() {
-    // Perform the Facebook login action here
-    // You can customize this function based on your requirements
   }
 
   return (
@@ -79,7 +73,7 @@ export default function Login() {
             "https://avishek-notes.netlify.app/notes/new"
           )}`}
         >
-          <FacebookLoginButton size="small" onClick={handleFbLogin} />
+          
         </a>
       </Form>
     </div>

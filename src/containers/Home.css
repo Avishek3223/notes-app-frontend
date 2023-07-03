@@ -37,7 +37,7 @@
 
 .btn-signup {
   background-color: #25313ccf;
- 
+
 }
 
 .btn-signup:hover {
@@ -47,7 +47,7 @@
 }
 
 .btn {
-  background-color:#25313ccf;
+  background-color: #25313ccf;
   border-color: #25313ccf;
   color: #fff;
 }
@@ -92,4 +92,27 @@
 .listItem {
   box-shadow: -14px 13px 13px rgba(0, 0, 0, 0.4);
   /* Adjust the shadow properties as desired */
+}
+
+.search-bar {
+  position: absolute;
+  top: 5%;
+  right: 34rem;
+  transform: translateY(-50%);
+  width: 219px;
+  height: 30px;
+  padding: 16px;
+  font-size: 14px;
+  border-radius: 28px;
+  border: 1px solid #263f5d73;
+  outline: none;
+}
+
+.search-bar:focus {
+  border-color: #d68b4a7d;
+  box-shadow: 0 0 0 0.2rem rgb(218 149 87 / 19%);
+}
+
+body{
+  background-repeat: no-repeat; 
 }

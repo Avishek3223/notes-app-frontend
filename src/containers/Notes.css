@@ -2,3 +2,22 @@
     height: 300px;
     font-size: 1.5rem;
 }
+
+.form-container {
+  display: flex;
+}
+
+.image-container {
+  margin-right: 20px;
+}
+
+.content-container {
+  flex-grow: 1;
+}
+.preview-image {
+  max-width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+}
+  

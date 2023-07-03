@@ -11,11 +11,13 @@ import { s3Upload } from "../libs/awsLib";
 export default function Notes() {
   const file = useRef(null);
   const { id } = useParams();
-  const navigate = useNavigate(); // Change from useHistory to useNavigate
+  const navigate = useNavigate();
   const [note, setNote] = useState(null);
   const [content, setContent] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [imageURL, setImageURL] = useState("");
+  const [selectedNotes, setSelectedNotes] = useState([]);
 
   useEffect(() => {
     function loadNote() {
@@ -29,6 +31,7 @@ export default function Notes() {
 
         if (attachment) {
           note.attachmentURL = await Storage.vault.get(attachment);
+          setImageURL(note.attachmentURL);
         }
 
         setContent(content);
@@ -50,7 +53,14 @@ export default function Notes() {
   }
 
   function handleFileChange(event) {
-    file.current = event.target.files[0];
+    const uploadedFile = event.target.files[0];
+    file.current = uploadedFile;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      setImageURL(reader.result);
+    };
+    reader.readAsDataURL(uploadedFile);
   }
 
   async function saveNote(note) {
@@ -84,7 +94,7 @@ export default function Notes() {
         attachment: attachment || note.attachment,
       });
 
-      navigate('/'); // Change history.push("/") to navigate('/')
+      navigate("/");
     } catch (e) {
       onError(e);
       setIsLoading(false);
@@ -107,7 +117,39 @@ export default function Notes() {
 
     try {
       await deleteNote();
-      navigate('/'); // Change history.push("/") to navigate('/')
+      navigate("/");
+    } catch (e) {
+      onError(e);
+      setIsDeleting(false);
+    }
+  }
+
+  function handleCheckboxChange(event, noteId) {
+    const isChecked = event.target.checked;
+
+    if (isChecked) {
+      setSelectedNotes([...selectedNotes, noteId]);
+    } else {
+      setSelectedNotes(selectedNotes.filter((id) => id !== noteId));
+    }
+  }
+
+  async function handleMultipleDelete() {
+    const confirmed = window.confirm(
+      `Are you sure you want to delete ${selectedNotes.length} selected notes?`
+    );
+
+    if (!confirmed) {
+      return;
+    }
+
+    setIsDeleting(true);
+
+    try {
+      await Promise.all(
+        selectedNotes.map((noteId) => API.del("notes", `/notes/${noteId}`))
+      );
+      navigate("/");
     } catch (e) {
       onError(e);
       setIsDeleting(false);
@@ -125,6 +167,11 @@ export default function Notes() {
               onChange={(e) => setContent(e.target.value)}
             />
           </Form.Group>
+          {imageURL && (
+            <div className="image-container">
+              <img className="preview-image" src={imageURL} alt="Attachment" />
+            </div>
+          )}
           <Form.Group controlId="file">
             <Form.Label>Attachment</Form.Label>
             {note.attachment && (
@@ -140,24 +187,37 @@ export default function Notes() {
             )}
             <Form.Control onChange={handleFileChange} type="file" />
           </Form.Group>
-          <LoaderButton
-            block
-            size="lg"
-            type="submit"
-            isLoading={isLoading}
-            disabled={!validateForm()}
-          >
-            Save
-          </LoaderButton>
-          <LoaderButton
-            block
-            size="lg"
-            variant="danger"
-            onClick={handleDelete}
-            isLoading={isDeleting}
-          >
-            Delete
-          </LoaderButton>
+          <div className="button-container">
+            <LoaderButton
+              block
+              size="lg"
+              type="submit"
+              isLoading={isLoading}
+              disabled={!validateForm()}
+            >
+              Save
+            </LoaderButton>
+            <LoaderButton
+              block
+              size="lg"
+              variant="danger"
+              onClick={handleDelete}
+              isLoading={isDeleting}
+            >
+              Delete
+            </LoaderButton>
+            {selectedNotes.length > 0 && (
+              <LoaderButton
+                block
+                size="lg"
+                variant="danger"
+                onClick={handleMultipleDelete}
+                isLoading={isDeleting}
+              >
+                Delete Selected
+              </LoaderButton>
+            )}
+          </div>
         </Form>
       )}
     </div>

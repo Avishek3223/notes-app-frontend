@@ -10,3 +10,21 @@
 .attachments-label {
     font-family: 'Poppins', sans-serif;
 }
+
+.NewNote .image-container {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.NewNote .preview-image {
+    max-width: 300px;
+    display: inline-block;
+}
+
+.NewNote .attachment-name {
+    display: inline-block;
+}
+
+body {
+    background-repeat: repeat;
+}

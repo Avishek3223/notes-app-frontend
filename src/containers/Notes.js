@@ -123,6 +123,7 @@ export default function Notes() {
       setIsDeleting(false);
     }
   }
+
   async function handleMultipleDelete() {
     const confirmed = window.confirm(
       `Are you sure you want to delete ${selectedNotes.length} selected notes?`

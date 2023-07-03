@@ -17,7 +17,7 @@ export default function Notes() {
   const [isLoading, setIsLoading] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const [imageURL, setImageURL] = useState("");
-  const [selectedNotes, setSelectedNotes] = useState([]);
+  const [selectedNotes,] = useState([]);
 
   useEffect(() => {
     function loadNote() {
@@ -123,17 +123,6 @@ export default function Notes() {
       setIsDeleting(false);
     }
   }
-
-  function handleCheckboxChange(event, noteId) {
-    const isChecked = event.target.checked;
-
-    if (isChecked) {
-      setSelectedNotes([...selectedNotes, noteId]);
-    } else {
-      setSelectedNotes(selectedNotes.filter((id) => id !== noteId));
-    }
-  }
-
   async function handleMultipleDelete() {
     const confirmed = window.confirm(
       `Are you sure you want to delete ${selectedNotes.length} selected notes?`

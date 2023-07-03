@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { API, Storage } from "aws-amplify";
+import { API, } from "aws-amplify";
 import { onError } from "../libs/errorLib";
 import { Form } from "react-bootstrap";
 import LoaderButton from "../components/LoaderButton";
@@ -14,7 +14,7 @@ export default function Notes() {
   const [notes, setNotes] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [imageURLs, setImageURLs] = useState([]);
+
 
   function validateForm() {
     return notes.every((note) => note.content.length > 0);
@@ -93,7 +93,7 @@ export default function Notes() {
   }
 
   function deleteNote() {
-    return API.del("notes", `/notes/${id}`);
+    return API.del("notes", `/notes/`);
   }
 
   async function handleDelete(event) {

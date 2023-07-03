@@ -6,20 +6,15 @@ import "./Home.css";
 import { API } from "aws-amplify";
 import { BsPencilSquare } from "react-icons/bs";
 import { LinkContainer } from "react-router-bootstrap";
+import { Link } from "react-router-dom";
 import Footer from "./Footer";
 
 export default function Home() {
   const [notes, setNotes] = useState([]);
   const { isAuthenticated } = useAppContext();
   const [isLoading, setIsLoading] = useState(true);
-  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    async function loadNotes() {
-      const params = searchQuery ? { queryStringParameters: { search: searchQuery } } : {};
-      return API.get("notes", "/notes", params);
-    }
-
     async function onLoad() {
       if (!isAuthenticated) {
         return;
@@ -36,19 +31,13 @@ export default function Home() {
     }
 
     onLoad();
-  }, [isAuthenticated, searchQuery]);
+  }, [isAuthenticated]);
+
+  function loadNotes() {
+    return API.get("notes", "/notes");
+  }
 
   function renderNotesList(notes) {
-    const filteredNotes = notes.filter((note) =>
-      note.content.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-
-    if (filteredNotes.length === 0) {
-      return (
-        <ListGroup.Item className="text-muted">No matching notes found.</ListGroup.Item>
-      );
-    }
-
     return (
       <>
         <LinkContainer to="/notes/new">
@@ -57,7 +46,7 @@ export default function Home() {
             <span className="ml-2 font-weight-bold">Create a new note</span>
           </ListGroup.Item>
         </LinkContainer>
-        {filteredNotes.map(({ noteId, content, createdAt }) => (
+        {notes.map(({ noteId, content, createdAt }) => (
           <LinkContainer key={noteId} to={`/notes/${noteId}`}>
             <ListGroup.Item action className="listItem">
               <span className="font-weight-bold">
@@ -74,26 +63,54 @@ export default function Home() {
     );
   }
 
-  function handleSearch(event) {
-    setSearchQuery(event.target.value);
+  function renderLander() {
+    return (
+      <div className="lander">
+        <h1 className="text">Scratch</h1>
+        <p className="text-muted">
+          <span className="simple-app-text">A simple note taking app</span>
+        </p>
+        <div className="pt-3">
+          <Link
+            to="/login"
+            className="btn btn-info btn-lg mr-3 btn-login"
+          >
+            Login
+          </Link>
+          <Link
+            to="/signup"
+            className="btn btn-success btn-lg custom-btn btn-signup"
+          >
+            Signup
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  function renderNotes() {
+    return (
+      <div className="notes">
+        <h2 className="pb-3 mt-4 mb-3 border-bottom notes-heading">Your Notes</h2>
+        <ListGroup>{!isLoading && renderNotesList(notes)}</ListGroup>
+      </div>
+    );
   }
 
   return (
     <div className="Home">
-      <h2 className="pb-3 mt-4 mb-3 border-bottom notes-heading">Your Notes</h2>
-      <input
-        type="text"
-        className="search-bar"
-        placeholder="Search Notes"
-        value={searchQuery}
-        onChange={handleSearch}
-      />
-      <ListGroup>{!isLoading && renderNotesList(notes)}</ListGroup>
-  
-      {/* Social Media Buttons */}
+      {isAuthenticated ? (
+        renderNotes()
+      ) : (
+        <div className="lander">
+          {renderLander()}
+        </div>
+      )}
+
+      {/* Footer */}
       <div className="footer">
         <Footer />
       </div>
     </div>
   );
-  }  
+}

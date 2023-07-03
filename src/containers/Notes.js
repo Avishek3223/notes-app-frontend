@@ -17,7 +17,6 @@ export default function Notes() {
   const [isLoading, setIsLoading] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const [imageURL, setImageURL] = useState("");
-  const [selectedNotes,] = useState([]);
 
   useEffect(() => {
     function loadNote() {
@@ -124,28 +123,6 @@ export default function Notes() {
     }
   }
 
-  async function handleMultipleDelete() {
-    const confirmed = window.confirm(
-      `Are you sure you want to delete ${selectedNotes.length} selected notes?`
-    );
-
-    if (!confirmed) {
-      return;
-    }
-
-    setIsDeleting(true);
-
-    try {
-      await Promise.all(
-        selectedNotes.map((noteId) => API.del("notes", `/notes/${noteId}`))
-      );
-      navigate("/");
-    } catch (e) {
-      onError(e);
-      setIsDeleting(false);
-    }
-  }
-
   return (
     <div className="Notes">
       {note && (
@@ -196,17 +173,6 @@ export default function Notes() {
             >
               Delete
             </LoaderButton>
-            {selectedNotes.length > 0 && (
-              <LoaderButton
-                block
-                size="lg"
-                variant="danger"
-                onClick={handleMultipleDelete}
-                isLoading={isDeleting}
-              >
-                Delete Selected
-              </LoaderButton>
-            )}
           </div>
         </Form>
       )}
